@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DocuMind document knowledge workspace" />
+    <title>DocuMind | Evidence-first workspace</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="DocuMind home">
+          <span class="brand-mark">DM</span>
+          <span><strong>DocuMind</strong><small>Evidence-first knowledge workspace</small></span>
+        </a>
+        <span id="connectionBadge" class="status-badge">Checking API...</span>
+      </header>
+
+      <section class="hero compact-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR DOCUMENTS, PROPERLY GROUNDED</p>
+          <h1>Ask your documents.<em>See the evidence.</em></h1>
+          <p class="intro">PDF와 Markdown을 업로드하고, 문서에 실제로 존재하는 내용만 질문하세요.</p>
+        </div>
+        <div class="stats hero-stats">
+          <div><strong>20MB</strong><span>per file</span></div>
+          <div><strong>PDF / MD</strong><span>MVP formats</span></div>
+          <div><strong>0.70+</strong><span>retrieval threshold</span></div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <section class="upload-panel" aria-labelledby="uploadTitle">
+          <div class="panel-heading">
+            <div><p class="step">STEP 01</p><h2 id="uploadTitle">Add a source document</h2></div>
+            <span class="ready-dot">Ready</span>
+          </div>
+          <form id="uploadForm">
+            <label id="dropZone" class="drop-zone" for="fileInput">
+              <span class="upload-icon">+</span>
+              <strong>파일을 선택하거나 여기에 놓으세요</strong>
+              <span>PDF, Markdown · 최대 20MB</span>
+              <input id="fileInput" name="file" type="file" accept=".pdf,.md,.markdown" />
+            </label>
+            <div id="filePreview" class="file-preview empty">선택된 파일이 없습니다.</div>
+            <button id="uploadButton" class="primary-button" type="submit">문서 업로드</button>
+            <p id="uploadStatus" class="feedback" role="status"></p>
+          </form>
+          <div class="next-steps"><div><span>Next</span><strong>Processing & indexing</strong></div><div><span>Then</span><strong>Ask with sources</strong></div></div>
+        </section>
+
+        <section class="panel question-panel" aria-labelledby="questionTitle">
+          <div class="panel-heading"><div><p class="step">STEP 02</p><h2 id="questionTitle">Ask your workspace</h2></div><span class="ready-dot">Grounded</span></div>
+          <form id="questionForm" class="question-form">
+            <label for="questionInput">질문</label>
+            <textarea id="questionInput" maxlength="1000" placeholder="예: 이 문서의 핵심 요구사항은 무엇인가요?"></textarea>
+            <button id="questionButton" class="primary-button" type="submit">문서에 질문하기</button>
+          </form>
+          <div id="answerBox" class="answer-box empty">문서를 업로드한 뒤 질문하면 근거가 여기에 표시됩니다.</div>
+        </section>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel" aria-labelledby="documentsTitle">
+          <div class="section-heading"><div><p class="step">SOURCES</p><h2 id="documentsTitle">Your documents</h2></div><button id="refreshDocuments" class="text-button" type="button">새로고침</button></div>
+          <div id="documentList" class="document-list"><p class="empty-copy">아직 등록된 문서가 없습니다.</p></div>
+        </section>
+        <section class="panel" aria-labelledby="historyTitle">
+          <div class="section-heading"><div><p class="step">HISTORY</p><h2 id="historyTitle">Recent questions</h2></div><button id="refreshHistory" class="text-button" type="button">새로고침</button></div>
+          <div id="historyList" class="history-list"><p class="empty-copy">아직 질문 기록이 없습니다.</p></div>
+        </section>
+      </section>
+
+      <section class="workspace-strip" aria-label="Product principles">
+        <article><span>01</span><h3>Private by default</h3><p>사용자별 문서와 질문 기록을 분리합니다.</p></article>
+        <article><span>02</span><h3>Evidence attached</h3><p>답변마다 문서명과 페이지 또는 청크를 표시합니다.</p></article>
+        <article><span>03</span><h3>No unsupported claims</h3><p>근거를 찾지 못하면 답변하지 않습니다.</p></article>
+      </section>
+      <footer class="footer"><span>DocuMind local workspace</span><a href="../README.md">Project documentation</a></footer>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
